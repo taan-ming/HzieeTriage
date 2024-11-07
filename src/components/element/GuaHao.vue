@@ -1,23 +1,34 @@
 <template>
   <div class="guahao">
     <!-- <area-picker></area-picker> -->
-    <div class="areachose" style="margin-left: 20px;margin-top: 15px;">
+    <div class="chose">
+        <div class="areachose" style="margin-left: 20px;margin-top: 15px;">
         <span>地区选择：</span>
         <el-tree-select v-model="value1" 
                         :data="areadata" 
                         :render-after-expand="false" 
                         check-strictly
                         style="width: 220px;" @change="handleAreaChange"/>
-    </div>
-    <div class="kschose" style="margin-top: 15px;margin-left: 20px;">
-        <span>科室选择：</span>
-        <el-tree-select v-model="value" 
-                        :data="data" 
-                        :render-after-expand="false" 
-                        style="width: 220px;" @change="handleDeptChange"/>
+        </div>
+        <div class="kschose" style="margin-top: 15px;margin-left: 20px;">
+            <span>科室选择：</span>
+            <el-tree-select v-model="value" 
+                            :data="data" 
+                            :render-after-expand="false" 
+                            style="width: 220px;" @change="handleDeptChange"/>
+        </div>
     </div>
     <el-divider/>
     <el-row :gutter="10">
+        <!-- <el-col v-for="(hospital, index) in hospitalList" :key="index" :span="8">
+            <div class="hospital" @click="$router.push('/DateDoctor')">
+                <el-row>
+                    <el-avatar class="ht" :size="50" :src="hospital.circleUrl"/>
+                    <span class="hsn">{{hospital.name}}</span>
+                </el-row>
+                <span class="adhsp">地址：{{hospital.address}}</span>
+            </div>
+        </el-col> -->
         <el-col :span="8">
             <div class="hospital" @click="$router.push('/DateDoctor')">
                 <el-row>
@@ -52,6 +63,9 @@
 <script setup>
 // import AreaPicker from '../AreaPicker.vue'
 import {ref} from 'vue'
+// import {ref, onMounted} from 'vue'
+// import axios from 'axios'
+
 const value = ref()
 const value1 = ref()
 const data = [
@@ -85,6 +99,30 @@ const areadata = [
     ]},
     {value: '3',label: '广西',children:[{value: '3-1', label:'桂林'}]}
 ]
+// const areadata = ref([])
+// const hospitalList = ref([])
+// onMounted(async () => {
+//   await fetchAreaData()
+//   await fetchHospitalData()
+// })
+
+// async function fetchAreaData() {
+//   try {
+//     const response = await axios.get('/api/getAreaData') // 假设后端接口为 /api/getAreaData
+//     areadata.value = response.data
+//   } catch (error) {
+//     console.error('Error fetching area data:', error)
+//   }
+// }
+// async function fetchHospitalData() {
+//   try {
+//     const response = await axios.get('/api/getHospitalData') // 假设后端接口为 /api/getHospitalData
+//     hospitalList.value = response.data
+//   } catch (error) {
+//     console.error('Error fetching hospital data:', error)
+//   }
+// }
+
 function handleAreaChange(selectedValue) {
   console.log('地区选择变化:', selectedValue);
 }
@@ -99,6 +137,11 @@ function handleDeptChange(selectedValue) {
     border: solid 1px #b4b4b4;
     border-radius: 15px;
     margin: 10px;
+}
+.chose{
+    height: 100px;
+    display: flex;
+    align-items: center;
 }
 .el-row {
   margin-bottom: 20px;

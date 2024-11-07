@@ -16,10 +16,9 @@
             <div class="textanswer" style="display:flex;flex: 1; margin-right: 10px;">
                 <textarea class="textplease" 
                 v-model="input" 
-                :disabled="isInputDisabled"
                 @keyup.enter="submit" 
                 placeholder="请输入你的消息..."></textarea>
-                <button :disabled="isInputDisabled" @click="submit">发送</button>
+                <button @click="submit">发送</button>
             </div>
         </div>
     </div>
@@ -32,7 +31,7 @@ export default {
         return{
             messages:[
                 {text:"您好，有什么可以帮您？", 
-                align: "left", name: "机器人", 
+                align: "left", name: "医生", 
                 time:new Date().toLocaleTimeString([],{hour: '2-digit', minute:'2-digit'})}
             ],
             input:'',
@@ -56,14 +55,13 @@ export default {
                 this.$nextTick(this.scrollToBottom);
                 setTimeout(() => {
                   const botMessage = {
-                        text: '好的',
+                        text: '回复',
                         align: 'left',
-                        name: '机器人',
+                        name: '医生',
                         time: new Date().toLocaleTimeString([],{hour: '2-digit', minute:'2-digit'})
                     };
                     this.messages.push(botMessage);
                     this.$nextTick(this.scrollToBottom);
-                    this.isInputDisabled = false;
                 }, 1000)
             }
         },

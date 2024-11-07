@@ -1,15 +1,53 @@
 <template>
-
     <div class="block">
-      <span class="demonstration">Picker with quick options</span>
-      <el-date-picker
-        v-model="value2"
-        type="date"
-        placeholder="Pick a day"
-        :disabled-date="disabledDate"
-        :shortcuts="shortcuts"
-        :size="size"
-      />
+      <div class="time">
+        <div style="padding-top: 13px;">
+          <span class="demonstration">选择预约时间：</span>
+          <el-date-picker
+            v-model="value2"
+            type="date"
+            placeholder="预约日期"
+            :disabled-date="disabledDate"
+            :shortcuts="shortcuts"
+            :size="size"/>
+        </div>
+      </div>
+      <el-divider/>
+      <el-row :gutter="10">
+        <el-col :span="8">
+            <div class="doctor" @click="$router.push('/DoctorTime')">
+                <el-row>
+                    <el-avatar class="ht" shape="square" :size="50" :src="squareUrl"/>
+                    <span class="hsn">吴化平</span>
+                    <span class="ys">副主任医师</span>
+                </el-row>
+                <span class="adhsp">接诊余量 20</span>
+                <el-progress class="number" :percentage="100"/> 
+            </div>
+        </el-col>
+        <el-col :span="8">
+            <div class="doctor" @click="$router.push('/DoctorTime')">
+                <el-row>
+                  <el-avatar class="ht" shape="square" :size="50" :src="squareUrl"/>
+                    <span class="hsn">吴化平</span>
+                    <span class="ys">副主任医师</span>
+                </el-row>
+                <span class="adhsp">接诊余量 20</span>
+                <el-progress class="number" :percentage="100"/> 
+            </div>
+        </el-col>
+        <el-col :span="8">
+            <div class="doctor" @click="$router.push('/DoctorTime')">
+                <el-row>
+                  <el-avatar class="ht" shape="square" :size="50" :src="squareUrl"/>
+                    <span class="hsn">吴化平</span>
+                    <span class="ys">副主任医师</span>
+                </el-row>
+                <span class="adhsp">接诊余量 20</span>
+                <el-progress class="number" :percentage="100"/> 
+            </div>
+        </el-col>
+    </el-row>
     </div>
 </template>
 
@@ -27,20 +65,17 @@ const disabledDate = (time) => {
 </script>
 
 <style>
-/* .datepicker{
-  border: 1px solid #c0c0c0;
+.block{
   margin: 10px;
-} */
-/* .date{
-  margin-left: 15px;
-  margin-top: 20px;
-  /* padding: 30px 0; */
-  /* text-align: center; */
-  /* border-right: solid 1px var(--el-border-color); */
-  /* display: block;
-  font-size: 14px;
-  margin-bottom: 20px;
-} */ 
+  border: 1px solid #b4b4b4;
+  border-radius: 15px;
+}
+.time{
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+  height: 100px;
+}
 .demo-date-picker {
   display: flex;
   width: 100%;
@@ -72,5 +107,25 @@ const disabledDate = (time) => {
 }
 .el-date-picker .el-picker-panel__content{
   width: 500px;
+}
+.adhsp{
+  color: #797777;
+}
+.ys{
+    margin-top: 25px;
+    margin-left: 20px;
+    font-size: 20px;
+}
+.number{
+  max-width: 400px;
+  margin-left: 15px;
+}
+.doctor {
+  border-radius: 4px;
+  min-height: 136px;
+  margin-left: 5px;
+  margin-right: 5px;
+  background-color: #fff;
+  border:solid 1px #b4b4b4;
 }
 </style>

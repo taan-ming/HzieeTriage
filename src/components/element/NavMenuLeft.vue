@@ -14,7 +14,7 @@
         <el-menu-item index="0" route="/">
             <span>智能问诊</span>
         </el-menu-item>
-        <el-menu-item index="1" route="/">
+        <el-menu-item index="1" route="/DialogBoxDoctor">
           <span>人工问诊</span>
         </el-menu-item>
         <el-menu-item index="2" route="/GuaHao">
